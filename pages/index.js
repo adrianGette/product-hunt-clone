@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+const Heading = styled.h1`
+  color: blue;
+`;
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <h1>Inicio</h1>
-    </div>
-  )
-}
+const Home = () => (
+  <div>
+    <Heading>Inicio</Heading>
+  </div>
+)
+
+export default Home
+
