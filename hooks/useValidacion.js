@@ -18,7 +18,29 @@ const useValidacion = (stateInicial, validar, fn) => {
         }
     }, []);
 
-    return ();
+    // función que se ejecuta mientras el usuario escribe algo
+    const handleChange = e => {
+        guardarValores({
+            ...valores,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    // función que se ejecuta cuando el usuario hace submit
+    const handleSubmit = e => {
+        e.preventDefault();
+        const erroresValidacion = validar(valores);
+        guardarErrores(erroresValidacion);
+        guardarSubmitForm(true);
+    }
+
+    return {
+        valores,
+        errores,
+        submitForm,
+        handleSubmit,
+        handleChange
+    }
 }
 
 export default useValidacion;
