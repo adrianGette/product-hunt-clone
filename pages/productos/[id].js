@@ -1,11 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { es } from 'date-fns/locale';
 
 import Layout from '../../components/layout/Layout';
 import { FirebaseContext } from '../../firebase';
 import Error404 from '../../components/layout/404';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { Campo, InputSubmit } from '../../components/ui/Formulario';
 
 const ContenedorProducto = styled.div`
     @media (min-width: 768px) {
@@ -73,7 +76,40 @@ const Producto = () => {
 
                     <ContenedorProducto>
                         <div>
-                            1
+                            <p>Publicado hace: { formatDistanceToNow( new Date(creado), {locale: es} ) }</p>
+
+                            <img src={urlimagen} />
+
+                            <p>{descripcion}</p>
+
+                            <h2>Agrega tu comentario</h2>
+
+                            <form>
+                                <Campo>
+                                    <input 
+                                        type="text"
+                                        name="mensaje"
+                                    />
+                                </Campo>
+
+                                <InputSubmit 
+                                    type="submit"
+                                    value="Agregar Comentario"
+                                />
+                            </form>
+
+                            <h2
+                                css={css`
+                                    margin: 2rem 0;
+                                `}
+                            >Comentarios</h2>
+
+                            {comentarios.map(comentario => (
+                                <li>
+                                    <p>{comentario.nombre}</p>
+                                    <p>Escrito por: {comentario.usuarioNombre}</p>
+                                </li>
+                            ))}
                         </div>
 
                         <aside>
