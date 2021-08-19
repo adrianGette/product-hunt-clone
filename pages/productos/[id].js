@@ -46,7 +46,7 @@ const Producto = () => {
             }
             obtenerProducto();
         }
-    }, [id]);
+    }, [id, producto]);
 
     if(Object.keys(producto).length === 0) return 'Cargando. . .';
 
@@ -59,7 +59,8 @@ const Producto = () => {
         url,
         urlimagen,
         votos,
-        creador
+        creador,
+        haVotado
     } = producto;
 
     // administrar y validar votos
@@ -71,8 +72,17 @@ const Producto = () => {
         // obtener y sumar un nuevo voto
         const nuevoTotalVotos = votos + 1;
 
+        // verificar si el usuario actual votó
+        if(haVotado.includes(usuario.uid)) return;
+
+        // guardar el id del usuario que votó
+        const nuevoHaVotado = [...haVotado, usuario.uid];
+
         // actualizar en la base de datos
-        firebase.db.collection('productos').doc(id).update({ votos: nuevoTotalVotos })
+        firebase.db.collection('productos').doc(id).update({ 
+            votos: nuevoTotalVotos, 
+            haVotado: nuevoHaVotado 
+        })
 
         // actualizar el state
         guardarProducto({
