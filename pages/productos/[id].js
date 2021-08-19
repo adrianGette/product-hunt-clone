@@ -24,6 +24,7 @@ const Producto = () => {
     // state del componente
     const [ producto, guardarProducto ] = useState({});
     const [ error, guardarError ] = useState(false);
+    const [ comentario, guardarComentario ] = useState({});
 
 
     // routing para obtener el id actual
@@ -91,6 +92,40 @@ const Producto = () => {
         })
     }
 
+    // funciones para crear comentarios
+    const comentarioChange = e => {
+        guardarComentario({
+            ...comentario,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const agregarComentario = e => {
+        e.preventDefault();
+
+        if(!usuario) {
+            return router.push('/login')
+        }
+
+        // información extra al comentario
+        comentario.usuarioId = usuario.uid;
+        comentario.usuarioNombre = usuario.displayName;
+
+        // Tomar copia de comentarios y agregarlos al arreglo
+        const nuevosComentarios = [...comentarios, comentario];
+
+        // actualizar la base de datos
+        firebase.db.collection('productos').doc(id).update({
+            comentarios: nuevosComentarios
+        })
+
+        // actualizar el state
+        guardarProducto({
+            ...producto,
+            comentarios: nuevosComentarios
+        })
+    }
+
 
     return (
         <Layout>
@@ -119,11 +154,14 @@ const Producto = () => {
                                 <>
                                     <h2>Agrega tu comentario</h2>
 
-                                    <form>
+                                    <form
+                                        onSubmit={agregarComentario}
+                                    >
                                         <Campo>
                                             <input 
                                                 type="text"
                                                 name="mensaje"
+                                                onChange={comentarioChange}
                                             />
                                         </Campo>
 
@@ -140,13 +178,31 @@ const Producto = () => {
                                     margin: 2rem 0;
                                 `}
                             >Comentarios</h2>
+                            
+                            {comentarios.length === 0 ? "Todavía no hay comentarios" : (
+                                <ul>
+                                    {comentarios.map((comentario, i) => (
+                                        <li
+                                            key={`${comentario.usuarioId}-${i}`}
+                                            css={css`
+                                                border: 1px solid #e1e1e1;
+                                                padding: 2rem;
+                                            `}
+                                        >
+                                            <p>{comentario.mensaje}</p>
+                                            <p>Escrito por 
+                                                <span
+                                                    css={css`
+                                                        font-weight: bold;
+                                                    `}
+                                                >{' '}{comentario.usuarioNombre}</span>
+                                            </p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
 
-                            {comentarios.map(comentario => (
-                                <li>
-                                    <p>{comentario.nombre}</p>
-                                    <p>Escrito por: {comentario.usuarioNombre}</p>
-                                </li>
-                            ))}
+                            
                         </div>
 
                         <aside>
