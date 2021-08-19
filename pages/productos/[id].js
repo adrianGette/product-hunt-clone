@@ -19,6 +19,16 @@ const ContenedorProducto = styled.div`
     }
 `;
 
+const CreadorProducto = styled.p`
+    padding: .5rem 2rem;
+    background-color: #DA552F;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+`;
+
 const Producto = () => {
 
     // state del componente
@@ -90,6 +100,13 @@ const Producto = () => {
             ...producto,
             votos: nuevoTotalVotos
         })
+    }
+
+    // identifica si el comentario es del creador del producto
+    const esCreador = id => {
+        if(creador.id == id) {
+            return true;
+        }
     }
 
     // funciones para crear comentarios
@@ -197,6 +214,10 @@ const Producto = () => {
                                                     `}
                                                 >{' '}{comentario.usuarioNombre}</span>
                                             </p>
+
+                                            { esCreador( comentario.usuarioId ) && 
+                                                <CreadorProducto>Autor de la publicación</CreadorProducto>
+                                            }
                                         </li>
                                     ))}
                                 </ul>

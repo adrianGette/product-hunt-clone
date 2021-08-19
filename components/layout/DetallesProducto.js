@@ -120,7 +120,7 @@ const DetallesProducto = ({producto}) => {
                         </div>
                     </Comentarios>
 
-                    <p>Publicado hace: { formatDistanceToNow( new Date(creado), {locale: es} ) }</p>
+                    <p>Publicado hace { formatDistanceToNow( new Date(creado), {locale: es} ) }</p>
                 </div>
             </DescripcionProducto>
 
