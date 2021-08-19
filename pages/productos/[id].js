@@ -31,7 +31,7 @@ const Producto = () => {
     const { query: { id } } = router;
 
     // context de firebase
-    const { firebase } = useContext(FirebaseContext);
+    const { firebase, usuario } = useContext(FirebaseContext);
 
     useEffect(() => {
         if(id) {
@@ -86,21 +86,25 @@ const Producto = () => {
 
                             <p>{descripcion}</p>
 
-                            <h2>Agrega tu comentario</h2>
+                            { usuario && (
+                                <>
+                                    <h2>Agrega tu comentario</h2>
 
-                            <form>
-                                <Campo>
-                                    <input 
-                                        type="text"
-                                        name="mensaje"
-                                    />
-                                </Campo>
+                                    <form>
+                                        <Campo>
+                                            <input 
+                                                type="text"
+                                                name="mensaje"
+                                            />
+                                        </Campo>
 
-                                <InputSubmit 
-                                    type="submit"
-                                    value="Agregar Comentario"
-                                />
-                            </form>
+                                        <InputSubmit 
+                                            type="submit"
+                                            value="Agregar Comentario"
+                                        />
+                                    </form>
+                                </>
+                            ) }
 
                             <h2
                                 css={css`
@@ -136,7 +140,10 @@ const Producto = () => {
                                     `}
                                 >{votos} Votos</p>
 
-                                <Boton>Votar</Boton>
+                                { usuario && (
+                                    <Boton>Votar</Boton>
+                                ) }
+
                             </div>
                         </aside>
                     </ContenedorProducto>
