@@ -28,6 +28,7 @@ const Layout = props => {
                         font-size: 1.6rem;
                         line-height: 1.5;
                         font-family: 'PT Sans', sans-serif;
+                        color: #E4E3E6;
                     }
 
                     h1, h2, h3 {
@@ -38,6 +39,7 @@ const Layout = props => {
                     h1, h2 {
                         font-family: 'Roboto Slab', serif;
                         font-weight: 700;
+                        color: #E4E3E6;
                     }
 
                     h3 {

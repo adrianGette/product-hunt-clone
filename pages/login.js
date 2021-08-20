@@ -83,6 +83,11 @@ const Login = () => {
             <InputSubmit 
               type="submit"
               value="Iniciar Sesión"
+              css={css`
+                background-color: #8C56BE;
+                border-radius: 5px;
+                letter-spacing: 1px;
+              `}
             />
           </Formulario>
         </>

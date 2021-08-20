@@ -33,7 +33,7 @@ const Buscar = () => {
       <Layout>
           <div className="listado-productos">
             <div className="contenedor">
-              <ul className="bg-white">
+              <ul className="bg-darkk">
                 {resultado.map(producto => (
                   <DetallesProducto 
                     key={producto.id}

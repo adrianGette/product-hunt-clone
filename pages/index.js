@@ -12,7 +12,7 @@ const Home = () => {
       <Layout>
           <div className="listado-productos">
             <div className="contenedor">
-              <ul className="bg-white">
+              <ul className="bg-darkk">
                 {productos.map(producto => (
                   <DetallesProducto 
                     key={producto.id}

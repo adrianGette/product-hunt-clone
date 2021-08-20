@@ -97,6 +97,11 @@ const CrearCuenta = () => {
             <InputSubmit 
               type="submit"
               value="Crear Cuenta"
+              css={css`
+                background-color: #8C56BE;
+                border-radius: 5px;
+                letter-spacing: 1px;
+              `}
             />
           </Formulario>
         </>

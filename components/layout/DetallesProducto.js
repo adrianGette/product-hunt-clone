@@ -48,9 +48,10 @@ const Comentarios = styled.div`
     div {
         display: flex;
         align-items: center;
-        border: 1px solid #e1e1e1;
+        border: 1px solid #8C56BE;
         padding: .3rem 1rem;
         margin-right: 2rem;
+        border-radius: 3px;
     }
 
     img {
@@ -72,8 +73,9 @@ const Comentarios = styled.div`
 const Votos = styled.div`
     flex: 0 0 auto;
     text-align: center;
-    border: 1px solid #e1e1e1;
+    border: 1px solid #8C56BE;
     padding: 1rem 3rem;
+    border-radius: 3px;
 
     div {
         font-size: 2rem;

@@ -9,7 +9,7 @@ const Nav = styled.nav`
     a {
         font-size: 1.8rem;
         margin-left: 2rem;
-        color: var(--gris2);
+        color: #E4E3E6;
         font-family: 'PT Sans', sans-serif;
 
         &:last-of-type {

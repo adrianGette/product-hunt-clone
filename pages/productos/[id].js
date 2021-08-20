@@ -192,13 +192,25 @@ const Producto = () => {
 
                         <ContenedorProducto>
                             <div>
-                                <p>Publicado hace: { formatDistanceToNow( new Date(creado), {locale: es} ) }</p>
+                                <p
+                                    css={css`
+                                        color: #E4E3E6;
+                                    `}
+                                >Publicado hace { formatDistanceToNow( new Date(creado), {locale: es} ) }</p>
 
-                                <p>Por: {creador.nombre} de {empresa}</p>
+                                <p
+                                    css={css`
+                                    color: #E4E3E6;
+                                `}
+                                >Por {creador.nombre} de {empresa}</p>
 
                                 <img src={urlimagen} />
 
-                                <p>{descripcion}</p>
+                                <p
+                                    css={css`
+                                    color: #E4E3E6;
+                                `}
+                                >{descripcion}</p>
 
                                 { usuario && (
                                     <>
@@ -218,6 +230,11 @@ const Producto = () => {
                                             <InputSubmit 
                                                 type="submit"
                                                 value="Agregar Comentario"
+                                                css={css`
+                                                    background-color: #FF9C07;
+                                                    border-radius: 5px;
+                                                    letter-spacing: 1px;
+                                                `}
                                             />
                                         </form>
                                     </>
@@ -264,6 +281,9 @@ const Producto = () => {
                                     target="_blank"
                                     bgColor="true"
                                     href={url}
+                                    css={css`
+                                        letter-spacing: 1px;
+                                    `}
                                 >Visitar URL</Boton>
 
                                 
@@ -282,6 +302,9 @@ const Producto = () => {
                                     { usuario && (
                                         <Boton
                                             onClick={votarProducto}
+                                            css={css`
+                                                letter-spacing: 1px;
+                                            `}
                                         >Votar</Boton>
                                     ) }
 
@@ -292,6 +315,12 @@ const Producto = () => {
                         { puedeBorrar() &&
                             <Boton
                                 onClick={eliminarProducto}
+                                css={css`
+                                    background-color: #B81210;
+                                    color: #fff;
+                                    letter-spacing: 1px;
+                                    display: inline-block;
+                                `}
                             >Eliminar Producto</Boton>
                         }
 

@@ -4,11 +4,12 @@ const Boton = styled.a`
     display: block;
     font-weight: 700;
     text-transform: uppercase;
-    border: 1px solid #d1d1d1;
+    border-radius: 5px;
     padding: .8rem 2rem;
     margin: 2rem auto;
     text-align: center;
-    background-color: ${props => props.bgColor ? '#DA552F' : 'white'};
+    letter-spacing: 1px;
+    background-color: ${props => props.bgColor ? '#8C56BE' : 'white'};
     color: ${props => props.bgColor ? 'white' : '#000'};
 
     &:last-of-type {

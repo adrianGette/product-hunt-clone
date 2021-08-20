@@ -11,6 +11,7 @@ const ContenedorHeader = styled.div`
     max-width: 1200px;
     width: 95%;
     margin: 0 auto;
+    background-color: #1F1B34;
 
     @media (min-width: 768px) {
         display: flex;
@@ -34,7 +35,7 @@ const Header = () => {
     return (
         <header
             css={css`
-                border-bottom: 2px solid var(--gris3);
+                border-bottom: 1px solid var(--gris3);
                 padding: 1rem 0;
             `}
         >
@@ -64,20 +65,32 @@ const Header = () => {
                             <p
                                 css={css`
                                 margin-right: 2rem;
+                                color: #E4E3E6;
                                 `}
-                            >Hola: { usuario.displayName }</p>
+                            >Hola { usuario.displayName }</p>
 
-                            <Boton bgColor="true" onClick={() => firebase.cerrarSesion()}>Cerrar Sesión</Boton>
+                            <Boton bgColor="true" onClick={() => firebase.cerrarSesion()} css={css`
+                                        margin-right: 1rem;
+                                        letter-spacing: 1px;
+                                    `}>Cerrar Sesión</Boton>
                         </>
                     ) : (
                         <>
                             <Link href="/login">
                                 <Boton
                                     bgColor="true"
+                                    css={css`
+                                        margin-right: 1rem;
+                                        letter-spacing: 1px;
+                                    `}
                                 >Login</Boton>
                             </Link>
                             <Link href="/crear-cuenta">
-                                <Boton>Crear Cuenta</Boton>
+                                <Boton
+                                    css={css`
+                                    letter-spacing: 1px;
+                                `}
+                                >Crear Cuenta</Boton>
                             </Link>
                         </>
                     
