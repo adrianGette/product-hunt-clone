@@ -37,7 +37,7 @@ export const Campo = styled.div`
 export const InputSubmit = styled.input`
     background-color: var(--naranja);
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     color: #FFF;
     font-size: 1.8rem;

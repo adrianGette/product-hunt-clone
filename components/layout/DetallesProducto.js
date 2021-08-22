@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { css } from "@emotion/react";
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { es } from 'date-fns/locale';
 import Link from 'next/link';
@@ -48,10 +49,12 @@ const Comentarios = styled.div`
     div {
         display: flex;
         align-items: center;
-        border: 1px solid #8C56BE;
+        border: none;
         padding: .3rem 1rem;
         margin-right: 2rem;
         border-radius: 3px;
+        background-color: #e2e2e2;
+        color: #000;
     }
 
     img {
@@ -73,9 +76,11 @@ const Comentarios = styled.div`
 const Votos = styled.div`
     flex: 0 0 auto;
     text-align: center;
-    border: 1px solid #8C56BE;
+    border: none;
     padding: 1rem 3rem;
     border-radius: 3px;
+    background-color: #e2e2e2;
+    color: #000;
 
     div {
         font-size: 2rem;
